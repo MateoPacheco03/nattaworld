@@ -1,0 +1,16 @@
+# Configuracion con datos sensibles
+config/database.php
+
+# Subidas de usuarios
+uploads/
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# IDE
+.vscode/
+.idea/
