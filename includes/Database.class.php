@@ -2,7 +2,7 @@
 class Database {
     private $host = "localhost";
     private $user = "root";
-    private $password = "";
+    private $password = "root";
     private $name_database = "proyecto_juniorworld";
 
     public function obtenerConexion() {

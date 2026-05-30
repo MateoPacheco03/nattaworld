@@ -1,0 +1,25 @@
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 16px;
+  max-width: 520px;
+}
+.campo label {
+  font-weight: 600;
+  font-size: 14px;
+}
+.campo input,
+.campo textarea {
+  padding: 11px 14px;
+  border: 1.5px solid rgb(219, 222, 229);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+}
+.campo input:focus,
+.campo textarea:focus {
+  outline: none;
+  border-color: rgb(50, 70, 169);
+}
+form button { margin-top: 8px; }

@@ -1,3 +1,17 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio</title>
+    
+</head>
+<body>
+   
+
+  
+</body>
+</html>
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -50,42 +64,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JuniorWorld — Login</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/css/stylos.css">
+    <link rel="stylesheet" href="./assets/css/botones.css">
 </head>
-<body class="bg-light">
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="text-center mb-4">
-                <h2 class="fw-bold">JuniorWorld</h2>
-                <p class="text-muted">Inicia sesion en tu cuenta</p>
-            </div>
-            <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'registro_exitoso'): ?>
-                <div class="alert alert-success">Registro exitoso. Ya puedes iniciar sesion.</div>
-            <?php endif; ?>
-            <?php if ($errores): ?>
-                <div class="alert alert-danger"><?php echo $errores; ?></div>
-            <?php endif; ?>
-            <div class="card shadow-sm">
-                <div class="card-body p-4">
-                    <form method="POST">
-                        <div class="mb-3">
-                            <label class="form-label">Correo electronico</label>
-                            <input type="email" name="correo" class="form-control" required>
+<body>
+
+    <?php @include_once('./includes/navbar.php'); ?>
+
+    <main>
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-5">
+                    <div class="text-center mb-4">
+                        <h2 class="fw-bold">JuniorWorld</h2>
+                        <p class="text-muted">Inicia sesion en tu cuenta</p>
+                    </div>
+                    <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'registro_exitoso'): ?>
+                        <div class="alert alert-success">Registro exitoso. Ya puedes iniciar sesion.</div>
+                    <?php endif; ?>
+                    <?php if ($errores): ?>
+                        <div class="alert alert-danger"><?php echo $errores; ?></div>
+                    <?php endif; ?>
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <form method="POST">
+                                <div class="mb-3">
+                                    <label class="form-label">Correo electronico</label>
+                                    <input type="email" name="correo" class="form-control" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Contrasena</label>
+                                    <input type="password" name="contrasena" class="form-control" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Iniciar sesion</button>
+                            </form>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Contrasena</label>
-                            <input type="password" name="contrasena" class="form-control" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary w-100">Iniciar sesion</button>
-                    </form>
+                    </div>
+                    <div class="text-center mt-3">
+                        <p>No tienes cuenta? <a href="registro.php">Registrate</a></p>
+                    </div>
                 </div>
             </div>
-            <div class="text-center mt-3">
-                <p>No tienes cuenta? <a href="registro.php">Registrate</a></p>
-            </div>
         </div>
-    </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </main>
+
+    <?php @include_once('./includes/footer.php'); ?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

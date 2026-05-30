@@ -1,0 +1,85 @@
+/* ============================================
+   BOTONES — JuniorWorld
+   ============================================ */
+
+/* ===== Botones del contenido (hero, CTA) ===== */
+.btn-primary,
+.btn-ghost,
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  transition: transform .15s, background .15s;
+}
+.btn-primary:hover,
+.btn-ghost:hover,
+.btn-accent:hover {
+  transform: translateY(-1px);
+}
+
+/* Primario (índigo) — "Soy candidato" */
+.btn-primary { background: rgb(50, 70, 169); color: white; }
+.btn-primary:hover { background: rgb(35, 50, 133); }
+
+/* Ghost (contorno) — "Soy empresa" */
+.btn-ghost {
+  background: transparent;
+  color: rgb(20, 30, 99);
+  border: 1.5px solid rgb(219, 222, 229);
+}
+.btn-ghost:hover { border-color: rgb(50, 70, 169); background: rgb(240, 245, 255); }
+
+/* Accent (verde) — "Crear mi perfil junior" */
+.btn-accent { background: rgb(25, 176, 54); color: white; }
+.btn-accent:hover { background: rgb(0, 139, 29); }
+
+/* Contenedor de los botones del hero */
+.hero-botones { display: flex; gap: 12px; margin-top: 24px; }
+
+
+/* ===== Botones de la navbar ===== */
+.contenedorNav .btn-nav-ghost,
+.contenedorNav .btn-nav-solid {
+  display: inline-block;
+  padding: 9px 18px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background .15s, transform .15s;
+}
+.contenedorNav .btn-nav-ghost:hover,
+.contenedorNav .btn-nav-solid:hover {
+  transform: translateY(-1px);
+}
+
+/* "Entrar" — contorno blanco */
+.contenedorNav .btn-nav-ghost {
+  background: transparent;
+  color: white;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+.contenedorNav .btn-nav-ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: white;
+}
+
+/* "Crear cuenta" — relleno blanco, texto índigo */
+.contenedorNav .btn-nav-solid {
+  background: white;
+  color: rgb(41, 39, 169);
+  border: 1.5px solid white;
+}
+.contenedorNav .btn-nav-solid:hover {
+  background: rgb(240, 245, 255);
+}
