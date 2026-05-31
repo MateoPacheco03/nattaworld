@@ -1,0 +1,86 @@
+.legal-hero {
+            background: rgb(20, 30, 99);
+            color: white;
+            padding: 72px 48px;
+            text-align: center;
+        }
+        .legal-hero .eyebrow {
+            color: rgb(65, 202, 81);
+        }
+        .legal-hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 800;
+            margin: 14px 0;
+            color: white;
+            line-height: 1.1;
+        }
+        .legal-hero .meta {
+            font-size: 13px;
+            opacity: 0.7;
+            font-family: monospace;
+        }
+        .legal-wrapper {
+            max-width: 820px;
+            margin: 0 auto;
+            padding: 56px 24px 96px;
+        }
+        .legal-intro {
+            font-size: 18px;
+            line-height: 1.75;
+            color: rgb(57, 61, 72);
+            background: rgb(240, 245, 255);
+            border-left: 4px solid rgb(50, 70, 169);
+            padding: 22px 26px;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+        .legal-wrapper h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: rgb(20, 30, 99);
+            margin-top: 44px;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgb(219, 222, 229);
+        }
+        .legal-wrapper p {
+            line-height: 1.85;
+            color: rgb(57, 61, 72);
+            margin-bottom: 16px;
+        }
+        .legal-wrapper ul {
+            line-height: 1.85;
+            color: rgb(57, 61, 72);
+            padding-left: 22px;
+            margin-bottom: 16px;
+        }
+        .legal-wrapper li {
+            list-style: disc;
+            margin-bottom: 8px;
+        }
+        .legal-wrapper a {
+            color: rgb(50, 70, 169);
+            font-weight: 600;
+        }
+        .legal-contacto {
+            background: rgb(20, 30, 99);
+            color: white;
+            padding: 32px;
+            border-radius: 16px;
+            margin-top: 48px;
+            text-align: center;
+        }
+        .legal-contacto h2 {
+            color: white;
+            border: none;
+            margin-top: 0;
+        }
+        .legal-contacto p {
+            color: rgb(217, 222, 235);
+        }
+        .legal-contacto a {
+            color: rgb(65, 202, 81);
+        }
+        /* anula el padding de section global para que el hero ocupe todo */
+        main { padding: 0; }
+  

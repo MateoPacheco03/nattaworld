@@ -101,7 +101,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                     <div class="text-center mt-3">
-                        <p>No tienes cuenta? <a href="registro.php">Registrate</a></p>
+                        <p>No tienes cuenta? <a href="registro_tipo.php">Registrate</a></p>
                     </div>
                 </div>
             </div>

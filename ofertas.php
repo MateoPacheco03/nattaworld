@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../includes/Oferta.class.php';
+require_once './includes/Oferta.class.php';
 $ofertas = Oferta::listarTodas();
 ?>
 <!DOCTYPE html>
@@ -10,12 +10,12 @@ $ofertas = Oferta::listarTodas();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Natt World — Ofertas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/stylos.css">
-    <link rel="stylesheet" href="../assets/css/botones.css">
+    <link rel="stylesheet" href="./assets/css/stylos.css">
+    <link rel="stylesheet" href="./assets/css/botones.css">
 </head>
 <body>
 
-    <?php include '../includes/navbar.php'; ?>
+    <?php include './includes/navbar.php'; ?>
 
     <main>
         <div class="container mt-5">
@@ -51,12 +51,12 @@ $ofertas = Oferta::listarTodas();
                                     </div>
                                     <p class="text-muted" style="font-size:14px;"><?php echo nl2br(htmlspecialchars($o['descripcion'])); ?></p>
                                     <?php if (isset($_SESSION['id']) && $_SESSION['rol'] == 'candidato'): ?>
-                                        <form method="POST" action="postular.php">
+                                        <form method="POST" action="candidato/postular.php">
                                             <input type="hidden" name="id_oferta" value="<?php echo $o['id']; ?>">
-                                            <button type="submit" class="btn btn-success w-100">Postularme</button>
+                                            <a href="candidato/oferta_detalle.php?id=<?php echo $o['id']; ?>" class="btn btn-success w-100">Ver detalle</a>
                                         </form>
                                     <?php else: ?>
-                                        <a href="../login.php" class="btn btn-success w-100">Inicia sesion para postularte</a>
+                                        <a href="login.php" class="btn btn-success w-100">Inicia sesion para postularte</a>
                                     <?php endif; ?>
                                 </div>
                             </div>
@@ -67,7 +67,7 @@ $ofertas = Oferta::listarTodas();
         </div>
     </main>
 
-    <?php include '../includes/footer.php'; ?>
+    <?php include './includes/footer.php'; ?>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

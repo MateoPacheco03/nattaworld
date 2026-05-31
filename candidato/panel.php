@@ -71,7 +71,7 @@ $total_ofertas = Oferta::contarTodas();
                         <div class="card-body p-4 text-center">
                             <h5 class="fw-bold">Ofertas disponibles</h5>
                             <p class="text-muted">Explora las ofertas y postulate a las que encajen contigo.</p>
-                            <a href="ofertas.php" class="btn btn-success">Ver ofertas</a>
+                            <a href="../ofertas.php" class="btn btn-success">Ver ofertas</a>
                         </div>
                     </div>
                 </div>

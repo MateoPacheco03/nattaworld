@@ -3,20 +3,21 @@ require_once('Database.class.php');
 
 class Postulacion {
 
-    public static function crear($id_usuario, $id_oferta) {
-        $database = new Database();
-        $conn = $database->obtenerConexion();
-        try {
-            $stmt = $conn->prepare('INSERT INTO POSTULACION (id_usuario, id_oferta, fecha_post, estado) VALUES (:id_usuario, :id_oferta, CURDATE(), :estado)');
-            $estado = 'pendiente';
-            $stmt->bindParam(':id_usuario', $id_usuario);
-            $stmt->bindParam(':id_oferta', $id_oferta);
-            $stmt->bindParam(':estado', $estado);
-            return $stmt->execute();
-        } catch (PDOException $e) {
-            return false;
-        }
+    public static function crear($id_usuario, $id_oferta, $cv = null) {
+    $database = new Database();
+    $conn = $database->obtenerConexion();
+    try {
+        $stmt = $conn->prepare('INSERT INTO POSTULACION (id_usuario, id_oferta, fecha_post, estado, cv) VALUES (:id_usuario, :id_oferta, CURDATE(), :estado, :cv)');
+        $estado = 'pendiente';
+        $stmt->bindParam(':id_usuario', $id_usuario);
+        $stmt->bindParam(':id_oferta', $id_oferta);
+        $stmt->bindParam(':estado', $estado);
+        $stmt->bindParam(':cv', $cv);
+        return $stmt->execute();
+    } catch (PDOException $e) {
+        return false;
     }
+}
 
     public static function yaPostulado($id_usuario, $id_oferta) {
         $database = new Database();

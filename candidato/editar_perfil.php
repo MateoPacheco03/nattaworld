@@ -19,18 +19,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $telefono = htmlspecialchars($_POST['telefono']);
 
     if ($nombre && $apellido1) {
-        $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono WHERE id = :id");
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellido1', $apellido1);
-        $stmt->bindParam(':apellido2', $apellido2);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':id', $id);
-        if ($stmt->execute()) {
-            $_SESSION['nombre'] = $nombre;
-            header('Location: panel.php?mensaje=perfil_actualizado');
-            exit();
-        } else {
-            $errores = "Error al actualizar el perfil";
+
+        // Gestion de la subida del CV (si se ha enviado un archivo)
+        $nombre_cv = null;
+        if (isset($_FILES['cv']) && $_FILES['cv']['error'] == 0) {
+            $tipo = $_FILES['cv']['type'];
+            $tamano = $_FILES['cv']['size'];
+
+            // Validar que sea PDF y no supere 2MB
+            if ($tipo != 'application/pdf') {
+                $errores = "El CV debe ser un archivo PDF";
+            } elseif ($tamano > 2 * 1024 * 1024) {
+                $errores = "El CV no puede superar los 2MB";
+            } else {
+                // Nombre unico: cv_idusuario_timestamp.pdf
+                $nombre_cv = 'cv_' . $id . '_' . time() . '.pdf';
+                $ruta_destino = '../uploads/cv/' . $nombre_cv;
+                move_uploaded_file($_FILES['cv']['tmp_name'], $ruta_destino);
+            }
+        }
+
+        if ($errores == "") {
+            // Si subio CV nuevo, actualizamos tambien el campo cv
+            if ($nombre_cv != null) {
+                $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono, cv = :cv WHERE id = :id");
+                $stmt->bindParam(':cv', $nombre_cv);
+            } else {
+                $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono WHERE id = :id");
+            }
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':apellido1', $apellido1);
+            $stmt->bindParam(':apellido2', $apellido2);
+            $stmt->bindParam(':telefono', $telefono);
+            $stmt->bindParam(':id', $id);
+
+            if ($stmt->execute()) {
+                $_SESSION['nombre'] = $nombre;
+                header('Location: panel.php?mensaje=perfil_actualizado');
+                exit();
+            } else {
+                $errores = "Error al actualizar el perfil";
+            }
         }
     } else {
         $errores = "El nombre y el primer apellido son obligatorios";
@@ -38,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // Obtener datos actuales
-$stmt = $conexion->prepare("SELECT nombre, apellido1, apellido2, correo, telefono FROM USUARIO WHERE id = :id LIMIT 1");
+$stmt = $conexion->prepare("SELECT nombre, apellido1, apellido2, correo, telefono, cv FROM USUARIO WHERE id = :id LIMIT 1");
 $stmt->bindParam(':id', $id);
 $stmt->execute();
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -67,7 +96,7 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                     <?php endif; ?>
                     <div class="card shadow-sm">
                         <div class="card-body p-4">
-                            <form method="POST">
+                            <form method="POST" enctype="multipart/form-data">
                                 <div class="mb-3">
                                     <label class="form-label">Nombre</label>
                                     <input type="text" name="nombre" class="form-control" value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required>
@@ -89,6 +118,15 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                                 <div class="mb-3">
                                     <label class="form-label">Telefono</label>
                                     <input type="tel" name="telefono" class="form-control" value="<?php echo htmlspecialchars($usuario['telefono']); ?>">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Curriculum (PDF, max 2MB)</label>
+                                    <input type="file" name="cv" class="form-control" accept="application/pdf">
+                                    <?php if (!empty($usuario['cv'])): ?>
+                                        <small class="text-muted d-block mt-2">
+                                            CV actual: <a href="../uploads/cv/<?php echo htmlspecialchars($usuario['cv']); ?>" target="_blank">Ver CV subido</a>
+                                        </small>
+                                    <?php endif; ?>
                                 </div>
                                 <button type="submit" class="btn btn-success w-100">Guardar cambios</button>
                                 <a href="panel.php" class="btn btn-outline-secondary w-100 mt-2">Cancelar</a>

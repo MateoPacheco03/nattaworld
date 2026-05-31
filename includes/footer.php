@@ -17,16 +17,16 @@
         <li>
             <h2>Empresa</h2>
         </li>
-        <li><a href="../nosotros.php">Sobre nosotros</a></li>
-        <li><a href="../blog.php">Blog</a></li>
-        <li><a href="../contacto.php">Contacto</a></li>
+        <li><a href="./nosotros.php">Sobre nosotros</a></li>
+        <li><a href="./blog.php">Blog</a></li>
+        <li><a href="./contacto.php">Contacto</a></li>
     </ul>
     <ul class='grid-item f4'>
         <li>
             <h2>Legal</h2>
         </li>
-        <li><a href="../privacidad.php">Privacidad</a></li>
-        <li><a href="../cookies.php">Cookies</a></li>
-        <li><a href="../terminos.php">Términos</a></li>
+        <li><a href="./privacidad.php">Privacidad</a></li>
+        <li><a href="./cookies.php">Cookies</a></li>
+        <li><a href="./terminos.php">Términos</a></li>
     </ul>
 </footer>
