@@ -1,21 +1,142 @@
-MIT License
+# LICENCIA MIT - Natt World
 
-Copyright (c) 2026 MateoPacheco03
+## Licencia de Software de Código Abierto
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+---
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+### Derechos de Autor y Permisos
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+**Copyright (c) 2026 MateoPacheco03**
+
+Se concede permiso, de forma gratuita, a cualquier persona que obtenga una copia de este software y los archivos de documentación asociados (el "Software"), para usar el Software sin restricción, incluidos, sin limitación, los derechos de:
+
+- **Usar** el software
+- **Copiar** el software
+- **Modificar** el software
+- **Fusionar** el software
+- **Publicar** el software
+- **Distribuir** el software
+- **Sublicenciar** el software
+- **Vender** copias del software
+
+Siempre que se cumplan las siguientes condiciones:
+
+---
+
+### Condiciones Obligatorias
+
+1. **Atribución de Derechos de Autor**: El aviso de derechos de autor anterior y este permiso deben incluirse en todas las copias o partes sustanciales del Software.
+
+2. **Inclusión de la Licencia**: Esta Licencia MIT debe incluirse en cualquier distribución del Software, ya sea en forma de código fuente o binaria.
+
+3. **Aviso de Cambios**: Si usted modifica el Software, debe indicar claramente qué cambios ha realizado y en qué fecha.
+
+---
+
+### Garantía y Responsabilidad
+
+**EL SOFTWARE SE PROPORCIONA "TAL COMO ESTÁ"**, sin garantía de ningún tipo, expresa o implícita, **INCLUYENDO PERO NO LIMITADO A LAS GARANTÍAS DE COMERCIABILIDAD, IDONEIDAD PARA UN PROPÓSITO PARTICULAR Y NO INFRACCIÓN.**
+
+**En ningún caso los autores o titulares de los derechos de autor serán responsables de ningún reclamo, daño u otra responsabilidad**, ya sea en una acción de contrato, agravio o de otra manera, que surja de o en conexión con el Software o el uso u otros tratos en el Software.
+
+---
+
+### Limitaciones de Uso
+
+El usuario del Software acepta que:
+
+1. **No hay soporte garantizado**: Los desarrolladores no están obligados a proporcionar soporte técnico, correcciones de errores o actualizaciones.
+
+2. **Uso bajo su responsabilidad**: El usuario es responsable de las consecuencias del uso del Software en producción.
+
+3. **Pruebas previas**: Se recomienda encarecidamente realizar pruebas exhaustivas antes de implementar en entornos de producción.
+
+4. **Cumplimiento legal**: El usuario es responsable de garantizar que su uso del Software cumple con todas las leyes y regulaciones aplicables.
+
+---
+
+### Atribución Requerida
+
+Si utiliza, modifica o distribuye este Software, debe incluir:
+
+- El nombre original del proyecto: **Natt World**
+- El autor original: **MateoPacheco03**
+- Un enlace al repositorio original (si es aplicable)
+- Una nota indicando si ha realizado cambios
+
+**Ejemplo de atribución apropiada:**
+
+```
+Basado en Natt World por MateoPacheco03
+```
+
+---
+
+### Dependencias y Bibliotecas Externas
+
+Este Software puede incluir o depender de software de terceros bajo licencias abiertas. El usuario debe:
+
+1. Revisar y cumplir con las licencias de todas las dependencias
+2. Incluir los avisos de derechos de autor de las librerías externas
+3. Respetar los términos específicos de cada licencia utilizada
+
+---
+
+### Información de Contacto y Soporte
+
+**Autor Original:** MateoPacheco03
+
+**Para reportar problemas o sugerencias:**
+- Crear un issue en el repositorio oficial
+- Contactar directamente al autor (si es aplicable)
+
+**Nota:** Las respuestas a reportes no están garantizadas.
+
+---
+
+### Historial de Versiones y Cambios
+
+| Versión | Fecha | Cambios |
+|---------|-------|---------|
+| 1.0 | 2026-05-31 | Versión inicial del proyecto |
+| | | |
+| | | |
+
+*Nota: Actualice esta tabla conforme realice cambios significativos*
+
+---
+
+### Cláusula de Terminación
+
+Si infringe cualquiera de los términos de esta Licencia, sus derechos bajo esta Licencia terminarán automáticamente. Sin embargo, las personas que hayan recibido copias o derechos de usted bajo esta Licencia no perderán sus derechos siempre que cumplan plenamente con ella.
+
+---
+
+### Validez de la Licencia
+
+Esta Licencia es efectiva a partir de la fecha de publicación del Software y permanece en vigor indefinidamente, a menos que sea modificada o revocada por el titular de los derechos de autor.
+
+---
+
+### Modificación de la Licencia
+
+El titular original de los derechos de autor se reserva el derecho de publicar versiones modificadas de esta Licencia bajo el mismo nombre. Sin embargo, no puede cambiar retrospectivamente los términos de las versiones anteriores.
+
+---
+
+### Interpretación
+
+Si alguna disposición de esta Licencia se considera inválida o inaplicable, las disposiciones restantes continuarán siendo válidas y efectivas.
+
+---
+
+**ACEPTACIÓN:**
+
+Al utilizar, copiar, modificar o distribuir este Software, usted acepta estar vinculado por todos los términos y condiciones de esta Licencia.
+
+---
+
+**Fecha de emisión:** 2026-05-31  
+**Licencia:** MIT License (Versión Estándar + Cláusulas Profesionales Adicionales)
+
+---

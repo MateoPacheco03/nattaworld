@@ -1,17 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Inicio</title>
-    
-</head>
-<body>
-   
-
-  
-</body>
-</html>
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -35,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['nombre'] = $datos['nombre'];
         $_SESSION['apellido1'] = $datos['apellido1'];
         $_SESSION['rol'] = 'admin';
-        header('Location: listar_usuarios.php');
+        header('Location: admin/panel_admin.php');
         exit();
     }
 
@@ -50,7 +36,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['nombre'] = $datos['nombre'];
         $_SESSION['apellido1'] = $datos['apellido1'];
         $_SESSION['rol'] = 'candidato';
-        header('Location: panel.php');
+        header('Location: candidato/panel.php');
+        exit();
+    }
+
+    // Verificar si es empresa
+    $stmt = $conexion->prepare("SELECT id, nombre, contrasena FROM EMPRESA WHERE correo = :correo LIMIT 1");
+    $stmt->bindParam(':correo', $correo);
+    $stmt->execute();
+    $datos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if ($datos && password_verify($contrasena, $datos['contrasena'])) {
+        $_SESSION['id'] = $datos['id'];
+        $_SESSION['nombre'] = $datos['nombre'];
+        $_SESSION['rol'] = 'empresa';
+        header('Location: empresa/panel_empresa.php');
         exit();
     }
 
