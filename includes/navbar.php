@@ -1,9 +1,9 @@
 <nav>
     <ul class='contenedorNav'>
-        <li class='item-grid n1'>Natt world</li>
+        <li class='item-grid n1'>NattaWorld</li>
         <li class='item-grid n2'><a href="/juniorworld/inicio.php">Inicio</a></li>
-        <li class='item-grid n3'><a href="/juniorworld/candidatos.php">Para candidatos</a></li>
-        <li class='item-grid n4'><a href="/juniorworld/empresas.php">Para empresas</a></li>
+        <li class='item-grid n3'><a href="/juniorworld/candidato.php">Para candidatos</a></li>
+        <li class='item-grid n4'><a href="/juniorworld/empresa.php">Para empresas</a></li>
         <li class='item-grid n5'><a href="/juniorworld/ofertas.php">Ofertas</a></li>
 
         <?php if (!isset($_SESSION['id'])): ?>

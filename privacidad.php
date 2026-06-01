@@ -1,12 +1,12 @@
 <?php
-// privacidad.php — Política de Privacidad de Natt World
+// privacidad.php — Política de Privacidad de NattaWorld
 ?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad — Natt World</title>
+    <title>Política de Privacidad — NattaWorld</title>
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/normativas.css">
@@ -26,18 +26,18 @@
 
         <div class="legal-wrapper">
             <p class="legal-intro">
-                En Natt World consideramos la protección de tus datos personales un compromiso fundamental y no un mero trámite. Esta Política describe, de forma transparente y conforme a la legislación vigente, qué información tratamos, con qué finalidad, sobre qué base jurídica, durante cuánto tiempo y qué derechos te asisten en todo momento.
+                En NattaWorld consideramos la protección de tus datos personales un compromiso fundamental y no un mero trámite. Esta Política describe, de forma transparente y conforme a la legislación vigente, qué información tratamos, con qué finalidad, sobre qué base jurídica, durante cuánto tiempo y qué derechos te asisten en todo momento.
             </p>
 
             <h2>1. Responsable del tratamiento</h2>
-            <p>El responsable del tratamiento de los datos personales recabados a través de la plataforma Natt World es Natt World España S.L. (en adelante, "Natt World"), entidad legalmente constituida con domicilio social en España.</p>
-            <p>Para cualquier cuestión relativa al tratamiento de tus datos, puedes dirigirte a nuestro Delegado de Protección de Datos (DPD) a través del correo privacidad@nattworld.es. Atenderemos tu solicitud dentro de los plazos legalmente establecidos.</p>
+            <p>El responsable del tratamiento de los datos personales recabados a través de la plataforma NattaWorld es NattaWorld España S.L. (en adelante, "NattaWorld"), entidad legalmente constituida con domicilio social en España.</p>
+            <p>Para cualquier cuestión relativa al tratamiento de tus datos, puedes dirigirte a nuestro Delegado de Protección de Datos (DPD) a través del correo privacidad@nattaworld.es. Atenderemos tu solicitud dentro de los plazos legalmente establecidos.</p>
 
             <h2>2. Ámbito de aplicación</h2>
-            <p>Esta Política se aplica a todos los datos personales que Natt World trata en el marco de la prestación de sus servicios, con independencia del canal a través del cual se hayan recabado: el registro en la plataforma, los formularios de contacto, la inscripción en ofertas de empleo o la navegación por el sitio.</p>
+            <p>Esta Política se aplica a todos los datos personales que NattaWorld trata en el marco de la prestación de sus servicios, con independencia del canal a través del cual se hayan recabado: el registro en la plataforma, los formularios de contacto, la inscripción en ofertas de empleo o la navegación por el sitio.</p>
 
             <h2>3. Información que recopilamos</h2>
-            <p>Natt World aplica el principio de minimización de datos: recopilamos únicamente la información estrictamente necesaria para prestar el servicio. En función de tu relación con la plataforma, podemos tratar las siguientes categorías:</p>
+            <p>NattaWorld aplica el principio de minimización de datos: recopilamos únicamente la información estrictamente necesaria para prestar el servicio. En función de tu relación con la plataforma, podemos tratar las siguientes categorías:</p>
             <ul>
                 <li>Datos identificativos: nombre, apellidos, correo electrónico y, opcionalmente, teléfono.</li>
                 <li>Datos de acceso: credenciales de inicio de sesión, almacenadas siempre de forma cifrada e irreversible.</li>
@@ -64,7 +64,7 @@
             <p>Conservaremos tus datos únicamente durante el tiempo necesario para cumplir las finalidades para las que fueron recabados y mientras mantengas tu cuenta activa. Tras la baja, los datos serán bloqueados y conservados a disposición de las autoridades durante los plazos de prescripción legal, y después suprimidos de forma segura.</p>
 
             <h2>7. Cesión de datos a terceros</h2>
-            <p>Natt World no vende ni cede tus datos a terceros con fines comerciales. Únicamente comunicaremos tus datos cuando exista una obligación legal, cuando sea imprescindible para el servicio (por ejemplo, comunicar tu candidatura a una empresa al inscribirte en su oferta) o cuando hayas otorgado tu consentimiento expreso.</p>
+            <p>NattaWorld no vende ni cede tus datos a terceros con fines comerciales. Únicamente comunicaremos tus datos cuando exista una obligación legal, cuando sea imprescindible para el servicio (por ejemplo, comunicar tu candidatura a una empresa al inscribirte en su oferta) o cuando hayas otorgado tu consentimiento expreso.</p>
 
             <h2>8. Medidas de seguridad</h2>
             <p>Hemos adoptado las medidas técnicas y organizativas necesarias para garantizar la seguridad de tus datos: cifrado de credenciales, control de accesos por roles, transmisión segura mediante protocolos cifrados y copias de seguridad periódicas. Te recomendamos custodiar tus credenciales con diligencia.</p>
@@ -79,17 +79,17 @@
                 <li>Limitación: restringir el tratamiento.</li>
                 <li>Portabilidad: recibir tus datos en formato estructurado.</li>
             </ul>
-            <p>Podrás ejercerlos escribiendo a privacidad@nattworld.es, acreditando tu identidad. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en www.aepd.es.</p>
+            <p>Podrás ejercerlos escribiendo a privacidad@nattaworld.es, acreditando tu identidad. También puedes presentar una reclamación ante la Agencia Española de Protección de Datos (AEPD) en www.aepd.es.</p>
 
             <h2>10. Datos de menores</h2>
-            <p>Los servicios de Natt World están dirigidos a personas mayores de 16 años. No recabamos de forma consciente datos de menores de dicha edad sin el consentimiento de quienes ostenten su tutela.</p>
+            <p>Los servicios de NattaWorld están dirigidos a personas mayores de 16 años. No recabamos de forma consciente datos de menores de dicha edad sin el consentimiento de quienes ostenten su tutela.</p>
 
             <h2>11. Cambios en la política</h2>
-            <p>Natt World se reserva el derecho a modificar esta Política para adaptarla a novedades legislativas o cambios en la plataforma. Cualquier modificación sustancial será comunicada y reflejada en la fecha de "última actualización".</p>
+            <p>NattaWorld se reserva el derecho a modificar esta Política para adaptarla a novedades legislativas o cambios en la plataforma. Cualquier modificación sustancial será comunicada y reflejada en la fecha de "última actualización".</p>
 
             <div class="legal-contacto">
                 <h2>¿Tienes dudas sobre tu privacidad?</h2>
-                <p>Escríbenos a <a href="mailto:privacidad@nattworld.es">privacidad@nattworld.es</a>. Tu privacidad es una de nuestras prioridades.</p>
+                <p>Escríbenos a <a href="mailto:privacidad@nattaworld.es">privacidad@nattaworld.es</a>. Tu privacidad es una de nuestras prioridades.</p>
             </div>
         </div>
     </main>

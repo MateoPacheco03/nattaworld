@@ -1,0 +1,68 @@
+/* --- ESTILOS BASE (Misma línea gráfica que candidatos) --- */
+        .emp-hero { background: rgb(20, 30, 99); color: white; padding: 80px 48px; text-align: center; }
+        .emp-hero .eyebrow { color: rgb(65, 202, 81); font-weight: bold; text-transform: uppercase; letter-spacing: 1px; font-size: 14px;}
+        .emp-hero h1 { font-size: clamp(32px, 5vw, 56px); font-weight: 800; color: white; margin: 14px 0; line-height: 1.1; }
+        .emp-hero p { font-size: 18px; color: rgb(217, 222, 235); max-width: 680px; margin: 0 auto 28px; line-height: 1.6; }
+        .emp-hero .hero-botones { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+        
+        .info-banner-rol { background: rgb(248, 250, 255); border-bottom: 1px solid rgb(219, 222, 229); padding: 16px 24px; text-align: center; color: rgb(20, 30, 99); font-size: 15px; }
+        .seccion-titulo { text-align: center; font-size: clamp(26px, 4vw, 40px); color: rgb(20, 30, 99); margin-bottom: 16px; }
+        .seccion-subtitulo { text-align: center; color: rgb(57, 61, 72); font-size: 17px; max-width: 700px; margin: 0 auto 48px; line-height: 1.6; }
+
+        /* --- ESTADÍSTICAS --- */
+        .emp-estadisticas { background: rgb(65, 202, 81); color: rgb(20, 30, 99); padding: 48px 24px; text-align: center; }
+        .grid-estadisticas { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; max-width: 1000px; margin: 0 auto; }
+        .stat-item h3 { font-size: 40px; font-weight: 800; margin-bottom: 8px; }
+        .stat-item p { font-weight: 600; font-size: 16px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* --- FILOSOFÍA EMPRESA --- */
+        .emp-proposito { padding: 80px 24px; max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 48px; }
+        .proposito-texto { flex: 1; }
+        .proposito-texto h2 { color: rgb(20, 30, 99); font-size: 36px; margin-bottom: 24px; }
+        .proposito-texto p { color: rgb(57, 61, 72); font-size: 17px; line-height: 1.7; margin-bottom: 16px; }
+        .proposito-visual { flex: 1; background: rgb(240, 245, 255); border-radius: 24px; padding: 48px; text-align: center; border: 1px solid rgb(219, 222, 229); box-shadow: 0 10px 30px rgba(20,30,99,0.05); }
+        .proposito-visual h3 { color: rgb(20, 30, 99); font-size: 24px; margin-bottom: 16px; }
+
+        /* --- BENEFICIOS --- */
+        .emp-beneficios { background: rgb(248, 250, 255); padding: 80px 24px; }
+        .emp-beneficios-inner { max-width: 1000px; margin: 0 auto; }
+        .grid-beneficios { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .beneficio { background: white; border: 1px solid rgb(219, 222, 229); border-radius: 16px; padding: 32px 28px; text-align: center; transition: transform 0.3s ease; }
+        .beneficio:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); }
+        .beneficio .icono { font-size: 36px; margin-bottom: 14px; }
+        .beneficio h3 { color: rgb(20, 30, 99); margin-bottom: 10px; font-size: 19px; }
+        .beneficio p { color: rgb(57, 61, 72); font-size: 15px; line-height: 1.6; }
+
+        /* --- CÓMO FUNCIONA --- */
+        .emp-pasos { padding: 80px 24px; }
+        .emp-pasos-inner { max-width: 1000px; margin: 0 auto; }
+        .grid-pasos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; text-align: center;}
+        .paso-numero { background: rgb(20, 30, 99); color: white; width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; margin: 0 auto 20px; }
+        .paso h3 { color: rgb(20, 30, 99); margin-bottom: 10px; font-size: 19px; }
+        .paso p { color: rgb(57, 61, 72); font-size: 15px; line-height: 1.6; }
+
+        /* --- TESTIMONIOS EMPRESAS --- */
+        .emp-testimonios { background: rgb(240, 245, 255); padding: 80px 24px; }
+        .emp-testimonios-inner { max-width: 1000px; margin: 0 auto; }
+        .grid-testimonios { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .testimonio-card { background: white; border-radius: 16px; padding: 32px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); }
+        .testimonio-card p { color: rgb(57, 61, 72); font-style: italic; line-height: 1.6; margin-bottom: 24px; }
+        .testimonio-autor h4 { color: rgb(20, 30, 99); font-size: 16px; margin: 0 0 4px 0; }
+        .testimonio-autor span { color: rgb(100, 105, 115); font-size: 13px; font-weight: 600; color: rgb(65, 202, 81); }
+
+        /* --- FAQ EMPRESAS --- */
+        .emp-faq { padding: 80px 24px; max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid rgb(219, 222, 229); padding: 24px 0; }
+        .faq-item h3 { color: rgb(20, 30, 99); font-size: 18px; margin-bottom: 12px; }
+        .faq-item p { color: rgb(57, 61, 72); font-size: 16px; line-height: 1.6; margin: 0; }
+
+        /* --- CTA FINAL --- */
+        .emp-cta-final { background: rgb(65, 202, 81); color: rgb(20, 30, 99); padding: 64px 24px; text-align: center; border-radius: 20px; max-width: 1000px; margin: 0 auto 64px; }
+        .emp-cta-final h2 { font-size: clamp(24px, 3vw, 36px); margin-bottom: 16px; color: rgb(20, 30, 99); font-weight: 800; }
+        .emp-cta-final p { color: rgb(20, 30, 99); margin-bottom: 32px; font-size: 18px; max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.6; font-weight: 500; }
+
+        @media (max-width: 768px) {
+            .emp-proposito { flex-direction: column; text-align: center; }
+            .grid-beneficios, .grid-pasos { grid-template-columns: 1fr; }
+            .emp-hero .hero-botones { flex-direction: column; }
+        }

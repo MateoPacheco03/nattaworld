@@ -1,7 +1,7 @@
 <footer class='contenedorFooter'>
     <ul class='grid-item f1'>
         <li>
-            <h2>Juniorworld</h2>
+            <h2>NattaWorld</h2>
             <p>La primera plataforma de empleo en España diseñada exclusivamente para perfiles junior. Conectamos talento sin experiencia con empresas que apuestan por el futuro.</p>
         </li>
     </ul>
