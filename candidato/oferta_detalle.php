@@ -72,6 +72,18 @@ if (isset($_SESSION['id']) && $_SESSION['rol'] == 'candidato') {
                         <div class="card-body p-4">
                             <h5 class="fw-bold mb-3">Postúlate a esta oferta</h5>
 
+                            <?php if (isset($_GET['error'])): ?>
+                                <?php if ($_GET['error'] == 'sin_cv'): ?>
+                                    <div class="alert alert-warning" style="font-size:13px;">Necesitas un CV para postularte. Sube uno aquí o añádelo en tu <a href="editar_perfil.php">perfil</a>.</div>
+                                <?php elseif ($_GET['error'] == 'formato'): ?>
+                                    <div class="alert alert-danger" style="font-size:13px;">El CV debe ser un archivo PDF.</div>
+                                <?php elseif ($_GET['error'] == 'tamano'): ?>
+                                    <div class="alert alert-danger" style="font-size:13px;">El CV no puede superar los 2MB.</div>
+                                <?php elseif ($_GET['error'] == 'subida'): ?>
+                                    <div class="alert alert-danger" style="font-size:13px;">No se pudo subir el CV. Inténtalo de nuevo.</div>
+                                <?php endif; ?>
+                            <?php endif; ?>
+
                             <?php if (!isset($_SESSION['id']) || $_SESSION['rol'] != 'candidato'): ?>
                                 <p class="text-muted" style="font-size:14px;">Inicia sesión como candidato para postularte.</p>
                                 <a href="../login.php" class="btn btn-success w-100">Iniciar sesión</a>
@@ -113,7 +125,6 @@ if (isset($_SESSION['id']) && $_SESSION['rol'] == 'candidato') {
                                 </form>
 
                                 <script>
-                                    // Mostrar/ocultar el campo de archivo segun la opcion elegida
                                     document.querySelectorAll('input[name="opcion_cv"]').forEach(function(radio) {
                                         radio.addEventListener('change', function() {
                                             document.getElementById('campoArchivo').style.display = (this.value === 'nuevo') ? 'block' : 'none';

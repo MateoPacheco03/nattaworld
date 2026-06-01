@@ -32,10 +32,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } elseif ($tamano > 2 * 1024 * 1024) {
                 $errores = "El CV no puede superar los 2MB";
             } else {
-                // Nombre unico: cv_idusuario_timestamp.pdf
-                $nombre_cv = 'cv_' . $id . '_' . time() . '.pdf';
-                $ruta_destino = '../uploads/cv/' . $nombre_cv;
-                move_uploaded_file($_FILES['cv']['tmp_name'], $ruta_destino);
+                // Nombre legible: cv_nombre_apellido1_apellido2_id.pdf
+                $nombre_limpio = $nombre . '_' . $apellido1 . ($apellido2 ? '_' . $apellido2 : '');
+                $nombre_limpio = strtolower($nombre_limpio);
+                $nombre_limpio = str_replace(' ', '_', $nombre_limpio);
+                $nombre_limpio = preg_replace('/[^a-z0-9_]/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $nombre_limpio));
+                $nombre_cv = 'cv_' . $nombre_limpio . '_' . date('Y-m-d_H-i-s') . '_' . $id . '.pdf';
+
+                $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/juniorworld/uploads/cv/' . $nombre_cv;
+                if (!move_uploaded_file($_FILES['cv']['tmp_name'], $ruta_destino)) {
+                    $errores = "No se pudo guardar el CV";
+                    $nombre_cv = null;
+                }
             }
         }
 

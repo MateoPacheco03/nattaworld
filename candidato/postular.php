@@ -46,8 +46,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_oferta'])) {
             }
 
             $cv_final = 'cv_' . $id_usuario . '_oferta' . $id_oferta . '_' . time() . '.pdf';
-            move_uploaded_file($_FILES['cv_nuevo']['tmp_name'], '../uploads/cv/' . $cv_final);
+            $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/juniorworld/uploads/cv/' . $cv_final;
+            if (!move_uploaded_file($_FILES['cv_nuevo']['tmp_name'], $ruta_destino)) {
+                header('Location: oferta_detalle.php?id=' . $id_oferta . '&error=subida');
+                exit();
+            }
         }
+    }
+
+    // Si no hay CV (ni del perfil ni nuevo), no permitir postularse
+    if (empty($cv_final)) {
+        header('Location: oferta_detalle.php?id=' . $id_oferta . '&error=sin_cv');
+        exit();
     }
 
     if (Postulacion::crear($id_usuario, $id_oferta, $cv_final)) {

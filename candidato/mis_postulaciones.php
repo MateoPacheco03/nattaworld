@@ -1,4 +1,4 @@
-<?php
+\<?php
 session_start();
 require_once '../includes/Postulacion.class.php';
 
@@ -31,9 +31,12 @@ $postulaciones = Postulacion::listarPorUsuario($_SESSION['id']);
             <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'cancelada'): ?>
                 <div class="alert alert-info">Postulacion cancelada.</div>
             <?php endif; ?>
+            <?php if (isset($_GET['mensaje']) && $_GET['mensaje'] == 'eliminada'): ?>
+                <div class="alert alert-info">Postulacion eliminada.</div>
+            <?php endif; ?>
 
             <?php if (count($postulaciones) == 0): ?>
-                <div class="alert alert-info">Todavia no te has postulado a ninguna oferta. <a href="ofertas.php">Ver ofertas disponibles</a></div>
+                <div class="alert alert-info">Todavia no te has postulado a ninguna oferta. <a href="../ofertas.php">Ver ofertas disponibles</a></div>
             <?php else: ?>
                 <div class="row g-4">
                     <?php foreach ($postulaciones as $p): ?>
@@ -47,12 +50,17 @@ $postulaciones = Postulacion::listarPorUsuario($_SESSION['id']);
                                         $estado = $p['estado'];
                                         $color = 'secondary';
                                         if ($estado == 'pendiente') $color = 'warning';
+                                        if ($estado == 'revisado') $color = 'info';
                                         if ($estado == 'aceptado') $color = 'success';
                                         if ($estado == 'rechazado') $color = 'danger';
                                     ?>
                                     <span class="badge bg-<?php echo $color; ?>"><?php echo ucfirst($estado); ?></span>
                                     <div class="mt-3">
-                                        <a href="cancelar_postulacion.php?id=<?php echo $p['id']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('Seguro que quieres cancelar esta postulacion?')">Cancelar postulacion</a>
+                                        <?php if ($p['estado'] == 'rechazado'): ?>
+                                            <a href="cancelar_postulacion.php?id=<?php echo $p['id']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('Seguro que quieres eliminar esta postulacion?')">Eliminar postulacion</a>
+                                        <?php else: ?>
+                                            <a href="cancelar_postulacion.php?id=<?php echo $p['id']; ?>" class="btn btn-outline-danger btn-sm" onclick="return confirm('Seguro que quieres cancelar esta postulacion?')">Cancelar postulacion</a>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                             </div>

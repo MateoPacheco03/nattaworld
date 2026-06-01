@@ -50,6 +50,7 @@ $candidatos = Postulacion::listarPorOferta($id_oferta);
                                 <th>Telefono</th>
                                 <th>Fecha</th>
                                 <th>Estado</th>
+                                <th>CV</th>
                                 <th>Acciones</th>
                             </tr>
                         </thead>
@@ -65,10 +66,18 @@ $candidatos = Postulacion::listarPorOferta($id_oferta);
                                             $estado = $c['estado'];
                                             $color = 'secondary';
                                             if ($estado == 'pendiente') $color = 'warning';
+                                            if ($estado == 'revisado') $color = 'info';
                                             if ($estado == 'aceptado') $color = 'success';
                                             if ($estado == 'rechazado') $color = 'danger';
                                         ?>
                                         <span class="badge bg-<?php echo $color; ?>"><?php echo ucfirst($estado); ?></span>
+                                    </td>
+                                    <td>
+                                        <?php if (!empty($c['cv'])): ?>
+                                            <a href="ver_cv.php?id=<?php echo $c['id']; ?>&cv=<?php echo htmlspecialchars($c['cv']); ?>" class="btn btn-outline-primary btn-sm" target="_blank">Ver CV</a>
+                                        <?php else: ?>
+                                            <span class="text-muted">No disponible</span>
+                                        <?php endif; ?>
                                     </td>
                                     <td>
                                         <a href="gestionar_candidato.php?id=<?php echo $c['id']; ?>&estado=aceptado&oferta=<?php echo $id_oferta; ?>" class="btn btn-success btn-sm">Aceptar</a>

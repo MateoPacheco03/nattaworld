@@ -75,10 +75,10 @@ class Postulacion {
     return $fila['total'];
     }
 
-    public static function listarPorOferta($id_oferta) {
+  public static function listarPorOferta($id_oferta) {
     $database = new Database();
     $conn = $database->obtenerConexion();
-    $stmt = $conn->prepare('SELECT P.id, P.fecha_post, P.estado, U.nombre, U.apellido1, U.apellido2, U.correo, U.telefono FROM POSTULACION P JOIN USUARIO U ON P.id_usuario = U.id WHERE P.id_oferta = :id_oferta ORDER BY P.fecha_post DESC');
+    $stmt = $conn->prepare('SELECT P.id, P.fecha_post, P.estado, P.cv, U.nombre, U.apellido1, U.apellido2, U.correo, U.telefono FROM POSTULACION P JOIN USUARIO U ON P.id_usuario = U.id WHERE P.id_oferta = :id_oferta ORDER BY P.fecha_post DESC');
     $stmt->bindParam(':id_oferta', $id_oferta);
     $stmt->execute();
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -97,5 +97,15 @@ public static function cambiarEstado($id_postulacion, $estado) {
     $stmt->execute();
     return $stmt->rowCount() > 0;
 }
+public static function marcarRevisado($id_postulacion) {
+    $database = new Database();
+    $conn = $database->obtenerConexion();
+    // Solo cambia a revisado si esta pendiente (no toca aceptado ni rechazado)
+    $stmt = $conn->prepare("UPDATE POSTULACION SET estado = 'revisado' WHERE id = :id AND estado = 'pendiente'");
+    $stmt->bindParam(':id', $id_postulacion);
+    $stmt->execute();
+    return $stmt->rowCount() > 0;
+}
+
 }
 ?>
