@@ -9,7 +9,10 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] != 'empresa') {
 }
 
 if (isset($_GET['id'])) {
-    Oferta::eliminar($_GET['id']);
+    // Solo borra si la oferta pertenece a esta empresa
+    if (Oferta::perteneceA($_GET['id'], $_SESSION['id'])) {
+        Oferta::eliminar($_GET['id']);
+    }
 }
 
 header('Location: mis_ofertas.php?mensaje=oferta_eliminada');

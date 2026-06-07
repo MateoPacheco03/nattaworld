@@ -15,6 +15,10 @@ if (!isset($_GET['id'])) {
 }
 
 $id_oferta = $_GET['id'];
+if (!Oferta::perteneceA($id_oferta, $_SESSION['id'])) {
+        header('Location: mis_ofertas.php');
+        exit();
+}
 $oferta = Oferta::obtener($id_oferta);
 $candidatos = Postulacion::listarPorOferta($id_oferta);
 ?>
@@ -23,7 +27,7 @@ $candidatos = Postulacion::listarPorOferta($id_oferta);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NattaWorld — Candidatos</title>
+    <title>Nattworld — Candidatos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/stylos.css">
     <link rel="stylesheet" href="../assets/css/botones.css">
@@ -74,7 +78,7 @@ $candidatos = Postulacion::listarPorOferta($id_oferta);
                                     </td>
                                     <td>
                                         <?php if (!empty($c['cv'])): ?>
-                                            <a href="ver_cv.php?id=<?php echo $c['id']; ?>&cv=<?php echo htmlspecialchars($c['cv']); ?>" class="btn btn-outline-primary btn-sm" target="_blank">Ver CV</a>
+                                            <a href="ver_cv.php?id=<?php echo $c['id']; ?>" class="btn btn-outline-primary btn-sm" target="_blank">Ver CV</a>
                                         <?php else: ?>
                                             <span class="text-muted">No disponible</span>
                                         <?php endif; ?>

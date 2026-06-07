@@ -1,10 +1,7 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 header('Content-Type: application/json');
-
-
-header('Content-Type: application/json');
+require_once('auth_api.php');
+verificarApiKey();
 require_once('../includes/Admin.class.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

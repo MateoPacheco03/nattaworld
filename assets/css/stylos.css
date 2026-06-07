@@ -156,3 +156,25 @@ Estadisticas inicio
   padding: 28px;
 }
 .num { font-size: 13px; color: rgb(50,70,169); font-weight: 700; font-family: monospace; }
+
+/* ===== Tema oscuro (preferencia guardada en cookie) ===== */
+body.tema-oscuro {
+    background-color: rgb(18, 20, 28);
+    color: rgb(220, 224, 232);
+}
+
+body.tema-oscuro main {
+    background-color: rgb(18, 20, 28);
+}
+
+body.tema-oscuro .card,
+body.tema-oscuro .paso,
+body.tema-oscuro .bloque-beneficio {
+    background-color: rgb(30, 34, 46);
+    color: rgb(220, 224, 232);
+    border-color: rgb(50, 55, 70);
+}
+
+body.tema-oscuro .text-muted {
+    color: rgb(150, 156, 168) !important;
+}

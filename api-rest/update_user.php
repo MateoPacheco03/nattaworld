@@ -1,6 +1,8 @@
 <?php
 header('Content-Type: application/json');
 require_once('../includes/User.class.php');
+require_once('auth_api.php');
+verificarApiKey();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $id = $_POST['id'] ?? '';

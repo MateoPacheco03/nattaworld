@@ -106,6 +106,23 @@ public static function marcarRevisado($id_postulacion) {
     $stmt->execute();
     return $stmt->rowCount() > 0;
 }
+public static function perteneceAEmpresa($id_postulacion, $id_empresa) {
+        $database = new Database();
+        $conn = $database->obtenerConexion();
+        $stmt = $conn->prepare('SELECT P.id FROM POSTULACION P JOIN OFERTA O ON P.id_oferta = O.id WHERE P.id = :id AND O.id_empresa = :id_empresa LIMIT 1');
+        $stmt->bindParam(':id', $id_postulacion);
+        $stmt->bindParam(':id_empresa', $id_empresa);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
+    public static function obtenerCv($id_postulacion) {
+        $database = new Database();
+        $conn = $database->obtenerConexion();
+        $stmt = $conn->prepare('SELECT cv FROM POSTULACION WHERE id = :id LIMIT 1');
+        $stmt->bindParam(':id', $id_postulacion);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 
 }
 ?>

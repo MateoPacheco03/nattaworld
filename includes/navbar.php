@@ -1,10 +1,14 @@
 <nav>
     <ul class='contenedorNav'>
-        <li class='item-grid n1'>NattaWorld</li>
+        <li class='item-grid n1'>Nattworld</li>
         <li class='item-grid n2'><a href="/juniorworld/inicio.php">Inicio</a></li>
         <li class='item-grid n3'><a href="/juniorworld/candidato.php">Para candidatos</a></li>
         <li class='item-grid n4'><a href="/juniorworld/empresa.php">Para empresas</a></li>
         <li class='item-grid n5'><a href="/juniorworld/ofertas.php">Ofertas</a></li>
+
+        <li class='item-grid' style="grid-column: 7; justify-self: end; display: flex; align-items: center;">
+            <button id="btnTema" class="btn-nav-ghost" style="cursor: pointer; background: transparent;" title="Cambiar tema">🌙</button>
+        </li>
 
         <?php if (!isset($_SESSION['id'])): ?>
             <li class='item-grid n7'><a class="btn-nav-ghost" href="/juniorworld/login.php">Entrar</a></li>
@@ -25,3 +29,5 @@
         <?php endif; ?>
     </ul>
 </nav>
+
+<script src="/juniorworld/assets/js/tema.js"></script>

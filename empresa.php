@@ -22,7 +22,7 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
     <?php if ($is_logged && $user_rol == 'candidato'): ?>
         <div class="info-banner-rol">
             Estás visualizando la sección para Empresas. ¿Buscas empleo? 
-            <a href="index.php" style="color: rgb(20, 30, 99); margin-left: 10px; font-weight: bold;">Volver al portal de candidatos →</a>
+            <a href="inicio.php" style="color: rgb(20, 30, 99); margin-left: 10px; font-weight: bold;">Volver al portal de candidatos →</a>
         </div>
     <?php endif; ?>
 
@@ -38,8 +38,8 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
                     <a href="empresa/registro_empresa.php" class="btn-accent">Registrar mi empresa</a>
                     <a href="#como-funciona" class="btn-ghost" style="color:white; border: 1px solid rgba(255,255,255,0.4);">¿Cómo funciona?</a>
                 <?php elseif ($user_rol == 'empresa' || $user_rol == 'admin'): ?>
-                    <a href="empresa/publicar_oferta.php" class="btn-accent">Publicar nueva vacante</a>
-                    <a href="empresa/panel.php" class="btn-ghost" style="color:white; border: 1px solid rgba(255,255,255,0.4);">Ir al panel corporativo</a>
+                    <a href="empresa/crear_oferta.php" class="btn-accent">Publicar nueva vacante</a>
+                    <a href="empresa/panel_empresa.php" class="btn-ghost" style="color:white; border: 1px solid rgba(255,255,255,0.4);">Ir al panel corporativo</a>
                 <?php else: ?>
                     <a href="ofertas.php" class="btn-accent">Explorar ofertas publicadas</a>
                 <?php endif; ?>
@@ -173,13 +173,13 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
                     <h2>El talento está esperando</h2>
                     <p>Tu equipo tiene espacio para crecer. Revisa las postulaciones a tus vacantes activas o publica una nueva.</p>
                     <div style="display:flex; justify-content:center;">
-                        <a href="empresa/panel.php" class="btn-primary" style="background: rgb(20, 30, 99); color: white; font-weight: bold; border: none; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px;">Ir a mi panel de reclutador</a>
+                        <a href="empresa/panel_empresa.php" class="btn-primary" style="background: rgb(20, 30, 99); color: white; font-weight: bold; border: none; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px;">Ir a mi panel de reclutador</a>
                     </div>
                 <?php else: ?>
                     <h2>NattaWorld conecta talento y oportunidad</h2>
                     <p>Si conoces a una empresa que busque talento joven, comparte nuestra plataforma con ellos.</p>
                     <div style="display:flex; justify-content:center;">
-                        <a href="index.php" class="btn-primary" style="background: rgb(20, 30, 99); color: white; font-weight: bold; border: none; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px;">Ir al portal de candidatos</a>
+                        <a href="inicio.php" class="btn-primary" style="background: rgb(20, 30, 99); color: white; font-weight: bold; border: none; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px;">Ir al portal de candidatos</a>
                     </div>
                 <?php endif; ?>
             </div>

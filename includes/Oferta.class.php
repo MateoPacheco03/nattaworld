@@ -87,5 +87,14 @@ class Oferta {
     $fila = $stmt->fetch(PDO::FETCH_ASSOC);
     return $fila['total'];
     }
+    public static function perteneceA($id_oferta, $id_empresa) {
+        $database = new Database();
+        $conn = $database->obtenerConexion();
+        $stmt = $conn->prepare('SELECT id FROM OFERTA WHERE id = :id AND id_empresa = :id_empresa LIMIT 1');
+        $stmt->bindParam(':id', $id_oferta);
+        $stmt->bindParam(':id_empresa', $id_empresa);
+        $stmt->execute();
+        return $stmt->rowCount() > 0;
+    }
 }
 ?>

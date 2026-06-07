@@ -9,7 +9,10 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] != 'empresa') {
 }
 
 if (isset($_GET['id']) && isset($_GET['estado']) && isset($_GET['oferta'])) {
-    Postulacion::cambiarEstado($_GET['id'], $_GET['estado']);
+    // Solo cambia el estado si la postulacion pertenece a una oferta de esta empresa
+    if (Postulacion::perteneceAEmpresa($_GET['id'], $_SESSION['id'])) {
+        Postulacion::cambiarEstado($_GET['id'], $_GET['estado']);
+    }
     header('Location: candidatos_oferta.php?id=' . $_GET['oferta']);
     exit();
 }
