@@ -9,6 +9,7 @@
     <title>Página no encontrada — Nattaworld</title>
     <link rel="stylesheet" href="/juniorworld/assets/css/stylos.css">
     <link rel="stylesheet" href="/juniorworld/assets/css/botones.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/juniorworld/assets/img/iconos/iconoNattaworld.png">
     <style>
         .error-wrapper {
             text-align: center;

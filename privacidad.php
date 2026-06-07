@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/normativas.css">
-
+    <link rel="icon" type="image/png" sizes="32x32" href="/juniorworld/assets/img/iconos/iconoNattaworld.png">
 </head>
 <body>
 

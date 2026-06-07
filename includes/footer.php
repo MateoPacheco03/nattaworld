@@ -9,9 +9,9 @@
         <li>
             <h2>Producto</h2>
         </li>
-        <li><a href="http://">Para candidatos</a></li>
-        <li><a href="http://">Para empresas</a></li>
-        <li><a href="http://">Buscar ofertas</a></li>
+        <li><a href="./candidato.php">Para candidatos</a></li>
+        <li><a href="./empresa.php">Para empresas</a></li>
+        <li><a href="./ofertas.php">Buscar ofertas</a></li>
     </ul>
     <ul class='grid-item f3'>
         <li>

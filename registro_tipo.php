@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/registro_tipo.css">
-    </style>
+
 </head>
 <body>
 
