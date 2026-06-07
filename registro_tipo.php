@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NattaWorld — Crear cuenta</title>
+    <title>Nattaworld — Crear cuenta</title>
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/registro_tipo.css">
@@ -18,7 +18,7 @@
 
     <main>
         <div class="registro-tipo">
-            <span class="eyebrow">Únete a NattaWorld</span>
+            <span class="eyebrow">Únete a Nattaworld</span>
             <h1>¿Cómo quieres registrarte?</h1>
             <p>Elige el tipo de cuenta que mejor encaja contigo</p>
 

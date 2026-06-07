@@ -10,7 +10,7 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NattaWorld — Para Empresas y Reclutadores</title>
+    <title>Nattaworld — Para Empresas y Reclutadores</title>
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/estilos_empresa.css">
@@ -31,7 +31,7 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
         <section class="emp-hero">
             <span class="eyebrow">Construye el equipo del mañana</span>
             <h1>Descubre el talento que impulsará tu empresa</h1>
-            <p>En NattaWorld conectamos a tu compañía con perfiles junior altamente motivados, adaptables y listos para aportar valor desde su primer día de trabajo. La energía que tu equipo necesita está aquí.</p>
+            <p>En Nattaworld conectamos a tu compañía con perfiles junior altamente motivados, adaptables y listos para aportar valor desde su primer día de trabajo. La energía que tu equipo necesita está aquí.</p>
             
             <div class="hero-botones">
                 <?php if (!$is_logged): ?>
@@ -84,7 +84,7 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
                     <div class="beneficio">
                         <div class="icono">🎯</div>
                         <h3>Nicho Especializado</h3>
-                        <p>Al publicar en NattaWorld, sabes que el 100% de la audiencia entiende que son vacantes de 0 a 1 año de experiencia.</p>
+                        <p>Al publicar en Nattaworld, sabes que el 100% de la audiencia entiende que son vacantes de 0 a 1 año de experiencia.</p>
                     </div>
                     <div class="beneficio">
                         <div class="icono">⚡</div>
@@ -128,14 +128,14 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
                 <h2 class="seccion-titulo">Empresas que ya crecen con nosotros</h2>
                 <div class="grid-testimonios">
                     <div class="testimonio-card">
-                        <p>"Necesitábamos ampliar nuestro departamento de marketing con alguien fresco y proactivo. Publicamos la oferta en NattaWorld y en 24 horas teníamos candidatos con portafolios increíbles y muchísima energía."</p>
+                        <p>"Necesitábamos ampliar nuestro departamento de marketing con alguien fresco y proactivo. Publicamos la oferta en Nattaworld y en 24 horas teníamos candidatos con portafolios increíbles y muchísima energía."</p>
                         <div class="testimonio-autor">
                             <h4>Elena G.</h4>
                             <span>HR Manager en TechNova</span>
                         </div>
                     </div>
                     <div class="testimonio-card">
-                        <p>"Como startup, no siempre podemos competir con los salarios de las multinacionales para perfiles Senior. En NattaWorld encontramos un desarrollador Junior brillante al que ahora estamos formando. Ha sido un éxito total."</p>
+                        <p>"Como startup, no siempre podemos competir con los salarios de las multinacionales para perfiles Senior. En Nattaworld encontramos un desarrollador Junior brillante al que ahora estamos formando. Ha sido un éxito total."</p>
                         <div class="testimonio-autor">
                             <h4>Marcos T.</h4>
                             <span>CTO en AppSolutions</span>
@@ -149,7 +149,7 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
             <h2 class="seccion-titulo">Preguntas Frecuentes</h2>
             <div class="faq-item">
                 <h3>¿Qué tipo de ofertas puedo publicar?</h3>
-                <p>NattaWorld es una plataforma estricta en su propuesta de valor: solo aceptamos ofertas para perfiles Junior, Entry-Level, Prácticas o Trainee (máximo 1 año de experiencia requerida).</p>
+                <p>Nattaworld es una plataforma estricta en su propuesta de valor: solo aceptamos ofertas para perfiles Junior, Entry-Level, Prácticas o Trainee (máximo 1 año de experiencia requerida).</p>
             </div>
             <div class="faq-item">
                 <h3>¿Cuál es el costo por publicar una vacante?</h3>
@@ -176,7 +176,7 @@ $user_rol = $is_logged ? $_SESSION['rol'] : null;
                         <a href="empresa/panel_empresa.php" class="btn-primary" style="background: rgb(20, 30, 99); color: white; font-weight: bold; border: none; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px;">Ir a mi panel de reclutador</a>
                     </div>
                 <?php else: ?>
-                    <h2>NattaWorld conecta talento y oportunidad</h2>
+                    <h2>Nattaworld conecta talento y oportunidad</h2>
                     <p>Si conoces a una empresa que busque talento joven, comparte nuestra plataforma con ellos.</p>
                     <div style="display:flex; justify-content:center;">
                         <a href="inicio.php" class="btn-primary" style="background: rgb(20, 30, 99); color: white; font-weight: bold; border: none; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-size: 16px;">Ir al portal de candidatos</a>

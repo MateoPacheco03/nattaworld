@@ -1,6 +1,6 @@
 <nav>
     <ul class='contenedorNav'>
-        <li class='item-grid n1'>Nattworld</li>
+        <li class='item-grid n1'>Nattaworld</li>
         <li class='item-grid n2'><a href="/juniorworld/inicio.php">Inicio</a></li>
         <li class='item-grid n3'><a href="/juniorworld/candidato.php">Para candidatos</a></li>
         <li class='item-grid n4'><a href="/juniorworld/empresa.php">Para empresas</a></li>

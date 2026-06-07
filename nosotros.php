@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre Nosotros — NattaWorld</title>
+    <title>Sobre Nosotros — Nattaworld</title>
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/normativas.css">
@@ -20,21 +20,21 @@
         <div class="legal-hero">
             <span class="eyebrow">Nuestra historia</span>
             <h1>El talento no se mide en años de experiencia</h1>
-            <p class="meta">Conoce quiénes somos y por qué existe NattaWorld</p>
+            <p class="meta">Conoce quiénes somos y por qué existe Nattaworld</p>
         </div>
 
         <div class="legal-wrapper">
             <p class="legal-intro">
-                NattaWorld nace de una convicción sencilla pero poderosa: el talento no se mide en años de experiencia. Somos la plataforma de empleo pensada para quienes empiezan su carrera profesional y para las empresas que quieren apostar por ese talento desde el primer día.
+                Nattaworld nace de una convicción sencilla pero poderosa: el talento no se mide en años de experiencia. Somos la plataforma de empleo pensada para quienes empiezan su carrera profesional y para las empresas que quieren apostar por ese talento desde el primer día.
             </p>
 
             <h2>Quiénes somos</h2>
             <p>Conocemos de primera mano lo difícil que resulta conseguir el primer empleo cuando todas las ofertas piden una experiencia que aún no se tiene. Hemos vivido esa contradicción frustrante: para trabajar hace falta experiencia, pero para tener experiencia hace falta trabajar.</p>
-            <p>Por eso creamos NattaWorld: un espacio donde los perfiles junior se valoran por sus aptitudes, sus ganas de aprender y su potencial, y no únicamente por la extensión de su currículum.</p>
+            <p>Por eso creamos Nattaworld: un espacio donde los perfiles junior se valoran por sus aptitudes, sus ganas de aprender y su potencial, y no únicamente por la extensión de su currículum.</p>
 
             <h2>El problema que queremos resolver</h2>
             <p>Cada año, miles de jóvenes y personas en proceso de reorientación profesional se topan con la misma barrera: la exigencia de experiencia previa. Esta exigencia, muchas veces desproporcionada para puestos de iniciación, deja fuera a candidatos perfectamente capacitados simplemente porque todavía no han tenido su primera oportunidad.</p>
-            <p>Al mismo tiempo, muchas empresas pierden la ocasión de incorporar talento fresco, motivado y con gran capacidad de aprendizaje. NattaWorld existe para resolver ambas caras de ese mismo problema.</p>
+            <p>Al mismo tiempo, muchas empresas pierden la ocasión de incorporar talento fresco, motivado y con gran capacidad de aprendizaje. Nattaworld existe para resolver ambas caras de ese mismo problema.</p>
 
             <h2>Nuestra misión</h2>
             <p>Acabar con la barrera del "se requiere experiencia previa". Queremos que cualquier persona con talento y motivación pueda acceder a su primera oportunidad laboral en condiciones justas, y que las empresas descubran el valor de incorporar perfiles junior a sus equipos.</p>
@@ -59,7 +59,7 @@
 
             <div class="legal-contacto">
                 <h2>¿Quieres saber más?</h2>
-                <p>Escríbenos a <a href="mailto:hola@nattaworld.es">hola@nattaworld.es</a>. Estaremos encantados de conocerte, ya seas candidato o empresa.</p>
+                <p>Escríbenos a <a href="mailto:hola@nattworld.es">hola@nattworld.es</a>. Estaremos encantados de conocerte, ya seas candidato o empresa.</p>
             </div>
         </div>
     </main>

@@ -17,7 +17,7 @@ $ofertas_destacadas = array_slice($ofertas, 0, 3);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NattaWorld — Tu primer empleo</title>
+    <title>Nattaworld — Tu primer empleo</title>
     <link rel="stylesheet" href="./assets/css/stylos.css">
     <link rel="stylesheet" href="./assets/css/botones.css">
     <link rel="stylesheet" href="./assets/css/estilos_inicio.css">   
@@ -30,9 +30,9 @@ $ofertas_destacadas = array_slice($ofertas, 0, 3);
         <!-- HERO -->
         <section class="hero">
             <div class="hero-texto">
-                <span class="eyebrow">Bienvenido a NattaWorld</span>
+                <span class="eyebrow">Bienvenido a Nattaworld</span>
                 <h1>Tu primer empleo no debería depender de la experiencia que no tienes.</h1>
-                <p>NattaWorld evalúa tu talento por aptitudes y ganas, no por años de currículum. Encuentra empresas que apuestan por ti desde el día uno.</p>
+                <p>Nattaworld evalúa tu talento por aptitudes y ganas, no por años de currículum. Encuentra empresas que apuestan por ti desde el día uno.</p>
                 <div class="hero-botones">
                     <a href="registro.php" class="btn-primary">Soy candidato</a>
                     <a href="empresa/registro_empresa.php" class="btn-ghost">Soy empresa</a>
