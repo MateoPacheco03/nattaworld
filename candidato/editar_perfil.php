@@ -8,69 +8,95 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] != 'candidato') {
     exit();
 }
 
-$errores = "";
+$errores = [];
 $id = $_SESSION['id'];
 
 // Procesar actualizacion
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = htmlspecialchars($_POST['nombre']);
-    $apellido1 = htmlspecialchars($_POST['apellido1']);
-    $apellido2 = htmlspecialchars($_POST['apellido2']);
-    $telefono = htmlspecialchars($_POST['telefono']);
+    $nombre    = trim($_POST['nombre'] ?? '');
+    $apellido1 = trim($_POST['apellido1'] ?? '');
+    $apellido2 = trim($_POST['apellido2'] ?? '');
+    $telefono  = trim($_POST['telefono'] ?? '');
 
-    if ($nombre && $apellido1) {
+    // Expresión para nombres: letras (con acentos y ñ) y espacios
+    $regex_nombre = "/^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ ]+$/";
 
-        // Gestion de la subida del CV (si se ha enviado un archivo)
-        $nombre_cv = null;
-        if (isset($_FILES['cv']) && $_FILES['cv']['error'] == 0) {
-            $tipo = $_FILES['cv']['type'];
-            $tamano = $_FILES['cv']['size'];
+    // --- Validaciones de los campos de texto ---
+    if ($nombre === '') {
+        $errores['nombre'] = "El nombre es obligatorio.";
+    } elseif (mb_strlen($nombre) < 2) {
+        $errores['nombre'] = "El nombre debe tener al menos 2 caracteres.";
+    } elseif (!preg_match($regex_nombre, $nombre)) {
+        $errores['nombre'] = "El nombre solo puede contener letras.";
+    }
 
-            // Validar que sea PDF y no supere 2MB
-            if ($tipo != 'application/pdf') {
-                $errores = "El CV debe ser un archivo PDF";
-            } elseif ($tamano > 2 * 1024 * 1024) {
-                $errores = "El CV no puede superar los 2MB";
-            } else {
-                // Nombre legible: cv_nombre_apellido1_apellido2_id.pdf
-                $nombre_limpio = $nombre . '_' . $apellido1 . ($apellido2 ? '_' . $apellido2 : '');
-                $nombre_limpio = strtolower($nombre_limpio);
-                $nombre_limpio = str_replace(' ', '_', $nombre_limpio);
-                $nombre_limpio = preg_replace('/[^a-z0-9_]/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $nombre_limpio));
-                $nombre_cv = 'cv_' . $nombre_limpio . '_' . date('Y-m-d_H-i-s') . '_' . $id . '.pdf';
+    if ($apellido1 === '') {
+        $errores['apellido1'] = "El primer apellido es obligatorio.";
+    } elseif (mb_strlen($apellido1) < 2) {
+        $errores['apellido1'] = "El apellido debe tener al menos 2 caracteres.";
+    } elseif (!preg_match($regex_nombre, $apellido1)) {
+        $errores['apellido1'] = "El apellido solo puede contener letras.";
+    }
 
-                $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/juniorworld/uploads/cv/' . $nombre_cv;
-                if (!move_uploaded_file($_FILES['cv']['tmp_name'], $ruta_destino)) {
-                    $errores = "No se pudo guardar el CV";
-                    $nombre_cv = null;
-                }
+    if ($apellido2 !== '' && !preg_match($regex_nombre, $apellido2)) {
+        $errores['apellido2'] = "El segundo apellido solo puede contener letras.";
+    }
+
+    if ($telefono !== '' && !preg_match("/^[0-9]{9}$/", $telefono)) {
+        $errores['telefono'] = "El teléfono debe tener 9 dígitos.";
+    }
+
+    // --- Gestión de la subida del CV (si se ha enviado un archivo) ---
+    $nombre_cv = null;
+    if (isset($_FILES['cv']) && $_FILES['cv']['error'] == 0) {
+        $tamano = $_FILES['cv']['size'];
+
+        // Comprobar el tipo real del archivo (no el que dice el navegador)
+        $finfo = finfo_open(FILEINFO_MIME_TYPE);
+        $tipo_real = finfo_file($finfo, $_FILES['cv']['tmp_name']);
+        finfo_close($finfo);
+
+        if ($tipo_real != 'application/pdf') {
+            $errores['cv'] = "El CV debe ser un archivo PDF.";
+        } elseif ($tamano > 2 * 1024 * 1024) {
+            $errores['cv'] = "El CV no puede superar los 2MB.";
+        } elseif (empty($errores)) {
+            // Solo guardamos el archivo si el resto del formulario es válido
+            $nombre_limpio = $nombre . '_' . $apellido1 . ($apellido2 ? '_' . $apellido2 : '');
+            $nombre_limpio = strtolower($nombre_limpio);
+            $nombre_limpio = str_replace(' ', '_', $nombre_limpio);
+            $nombre_limpio = preg_replace('/[^a-z0-9_]/', '', iconv('UTF-8', 'ASCII//TRANSLIT', $nombre_limpio));
+            $nombre_cv = 'cv_' . $nombre_limpio . '_' . date('Y-m-d_H-i-s') . '_' . $id . '.pdf';
+
+            $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/juniorworld/uploads/cv/' . $nombre_cv;
+            if (!move_uploaded_file($_FILES['cv']['tmp_name'], $ruta_destino)) {
+                $errores['cv'] = "No se pudo guardar el CV.";
+                $nombre_cv = null;
             }
         }
+    }
 
-        if ($errores == "") {
-            // Si subio CV nuevo, actualizamos tambien el campo cv
-            if ($nombre_cv != null) {
-                $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono, cv = :cv WHERE id = :id");
-                $stmt->bindParam(':cv', $nombre_cv);
-            } else {
-                $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono WHERE id = :id");
-            }
-            $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':apellido1', $apellido1);
-            $stmt->bindParam(':apellido2', $apellido2);
-            $stmt->bindParam(':telefono', $telefono);
-            $stmt->bindParam(':id', $id);
-
-            if ($stmt->execute()) {
-                $_SESSION['nombre'] = $nombre;
-                header('Location: panel.php?mensaje=perfil_actualizado');
-                exit();
-            } else {
-                $errores = "Error al actualizar el perfil";
-            }
+    // Si no hay ningún error, actualizar
+    if (empty($errores)) {
+        if ($nombre_cv != null) {
+            $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono, cv = :cv WHERE id = :id");
+            $stmt->bindParam(':cv', $nombre_cv);
+        } else {
+            $stmt = $conexion->prepare("UPDATE USUARIO SET nombre = :nombre, apellido1 = :apellido1, apellido2 = :apellido2, telefono = :telefono WHERE id = :id");
         }
-    } else {
-        $errores = "El nombre y el primer apellido son obligatorios";
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellido1', $apellido1);
+        $stmt->bindParam(':apellido2', $apellido2);
+        $stmt->bindParam(':telefono', $telefono);
+        $stmt->bindParam(':id', $id);
+
+        if ($stmt->execute()) {
+            $_SESSION['nombre'] = $nombre;
+            header('Location: panel.php?mensaje=perfil_actualizado');
+            exit();
+        } else {
+            $errores['general'] = "Error al actualizar el perfil.";
+        }
     }
 }
 
@@ -79,6 +105,14 @@ $stmt = $conexion->prepare("SELECT nombre, apellido1, apellido2, correo, telefon
 $stmt->bindParam(':id', $id);
 $stmt->execute();
 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+// Si venimos de un POST con errores, conservar lo que el usuario escribió
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $usuario['nombre']    = $nombre;
+    $usuario['apellido1'] = $apellido1;
+    $usuario['apellido2'] = $apellido2;
+    $usuario['telefono']  = $telefono;
+}
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -99,24 +133,39 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
             <div class="row justify-content-center">
                 <div class="col-md-6">
                     <h2 class="fw-bold mb-4">Editar mi perfil</h2>
-                    <?php if ($errores): ?>
-                        <div class="alert alert-danger"><?php echo $errores; ?></div>
+                    <?php if (isset($errores['general'])): ?>
+                        <div class="alert alert-danger"><?php echo $errores['general']; ?></div>
                     <?php endif; ?>
                     <div class="card shadow-sm">
                         <div class="card-body p-4">
-                            <form method="POST" enctype="multipart/form-data">
+                            <form method="POST" enctype="multipart/form-data" novalidate>
                                 <div class="mb-3">
                                     <label class="form-label">Nombre</label>
-                                    <input type="text" name="nombre" class="form-control" value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required>
+                                    <input type="text" name="nombre"
+                                           class="form-control <?php echo isset($errores['nombre']) ? 'is-invalid' : ''; ?>"
+                                           value="<?php echo htmlspecialchars($usuario['nombre']); ?>" required>
+                                    <?php if (isset($errores['nombre'])): ?>
+                                        <div class="invalid-feedback"><?php echo $errores['nombre']; ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Apellido 1</label>
-                                        <input type="text" name="apellido1" class="form-control" value="<?php echo htmlspecialchars($usuario['apellido1']); ?>" required>
+                                        <input type="text" name="apellido1"
+                                               class="form-control <?php echo isset($errores['apellido1']) ? 'is-invalid' : ''; ?>"
+                                               value="<?php echo htmlspecialchars($usuario['apellido1']); ?>" required>
+                                        <?php if (isset($errores['apellido1'])): ?>
+                                            <div class="invalid-feedback"><?php echo $errores['apellido1']; ?></div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Apellido 2</label>
-                                        <input type="text" name="apellido2" class="form-control" value="<?php echo htmlspecialchars($usuario['apellido2']); ?>">
+                                        <input type="text" name="apellido2"
+                                               class="form-control <?php echo isset($errores['apellido2']) ? 'is-invalid' : ''; ?>"
+                                               value="<?php echo htmlspecialchars($usuario['apellido2']); ?>">
+                                        <?php if (isset($errores['apellido2'])): ?>
+                                            <div class="invalid-feedback"><?php echo $errores['apellido2']; ?></div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="mb-3">
@@ -125,11 +174,21 @@ $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Telefono</label>
-                                    <input type="tel" name="telefono" class="form-control" value="<?php echo htmlspecialchars($usuario['telefono']); ?>">
+                                    <input type="tel" name="telefono"
+                                           class="form-control <?php echo isset($errores['telefono']) ? 'is-invalid' : ''; ?>"
+                                           value="<?php echo htmlspecialchars($usuario['telefono']); ?>">
+                                    <?php if (isset($errores['telefono'])): ?>
+                                        <div class="invalid-feedback"><?php echo $errores['telefono']; ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Curriculum (PDF, max 2MB)</label>
-                                    <input type="file" name="cv" class="form-control" accept="application/pdf">
+                                    <input type="file" name="cv"
+                                           class="form-control <?php echo isset($errores['cv']) ? 'is-invalid' : ''; ?>"
+                                           accept="application/pdf">
+                                    <?php if (isset($errores['cv'])): ?>
+                                        <div class="invalid-feedback"><?php echo $errores['cv']; ?></div>
+                                    <?php endif; ?>
                                     <?php if (!empty($usuario['cv'])): ?>
                                         <small class="text-muted d-block mt-2">
                                             CV actual: <a href="../uploads/cv/<?php echo htmlspecialchars($usuario['cv']); ?>" target="_blank">Ver CV subido</a>

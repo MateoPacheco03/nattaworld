@@ -1,60 +1,67 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
 session_start();
 require_once 'config/database.php';
 
 $errores = "";
+$correo = "";
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $correo = htmlspecialchars($_POST['correo']);
-    $contrasena = $_POST['contrasena'];
+    $correo = trim($_POST['correo'] ?? '');
+    $contrasena = $_POST['contrasena'] ?? '';
 
-    // Verificar si es administrador
-    $stmt = $conexion->prepare("SELECT id, nombre, apellido1, contrasena FROM ADMINISTRADOR WHERE correo = :correo LIMIT 1");
-    $stmt->bindParam(':correo', $correo);
-    $stmt->execute();
-    $datos = $stmt->fetch(PDO::FETCH_ASSOC);
+    // Validación básica de campos
+    if ($correo === '' || $contrasena === '') {
+        $errores = "Debes rellenar el correo y la contraseña.";
+    } elseif (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
+        $errores = "Introduce un correo electrónico válido.";
+    } else {
+        // Verificar si es administrador
+        $stmt = $conexion->prepare("SELECT id, nombre, apellido1, contrasena FROM ADMINISTRADOR WHERE correo = :correo LIMIT 1");
+        $stmt->bindParam(':correo', $correo);
+        $stmt->execute();
+        $datos = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    if ($datos && password_verify($contrasena, $datos['contrasena'])) {
-        $_SESSION['id'] = $datos['id'];
-        $_SESSION['nombre'] = $datos['nombre'];
-        $_SESSION['apellido1'] = $datos['apellido1'];
-        $_SESSION['rol'] = 'admin';
-        header('Location: admin/panel_admin.php');
-        exit();
+        if ($datos && password_verify($contrasena, $datos['contrasena'])) {
+            $_SESSION['id'] = $datos['id'];
+            $_SESSION['nombre'] = $datos['nombre'];
+            $_SESSION['apellido1'] = $datos['apellido1'];
+            $_SESSION['rol'] = 'admin';
+            header('Location: admin/panel_admin.php');
+            exit();
+        }
+
+        // Verificar si es candidato
+        $stmt = $conexion->prepare("SELECT id, nombre, apellido1, contrasena FROM USUARIO WHERE correo = :correo LIMIT 1");
+        $stmt->bindParam(':correo', $correo);
+        $stmt->execute();
+        $datos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($datos && password_verify($contrasena, $datos['contrasena'])) {
+            $_SESSION['id'] = $datos['id'];
+            $_SESSION['nombre'] = $datos['nombre'];
+            $_SESSION['apellido1'] = $datos['apellido1'];
+            $_SESSION['rol'] = 'candidato';
+            header('Location: candidato/panel.php');
+            exit();
+        }
+
+        // Verificar si es empresa
+        $stmt = $conexion->prepare("SELECT id, nombre, contrasena FROM EMPRESA WHERE correo = :correo LIMIT 1");
+        $stmt->bindParam(':correo', $correo);
+        $stmt->execute();
+        $datos = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($datos && password_verify($contrasena, $datos['contrasena'])) {
+            $_SESSION['id'] = $datos['id'];
+            $_SESSION['nombre'] = $datos['nombre'];
+            $_SESSION['rol'] = 'empresa';
+            header('Location: empresa/panel_empresa.php');
+            exit();
+        }
+
+        // Si llega aquí, las credenciales no son correctas
+        $errores = "Correo o contrasena incorrectos";
     }
-
-    // Verificar si es candidato
-    $stmt = $conexion->prepare("SELECT id, nombre, apellido1, contrasena FROM USUARIO WHERE correo = :correo LIMIT 1");
-    $stmt->bindParam(':correo', $correo);
-    $stmt->execute();
-    $datos = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($datos && password_verify($contrasena, $datos['contrasena'])) {
-        $_SESSION['id'] = $datos['id'];
-        $_SESSION['nombre'] = $datos['nombre'];
-        $_SESSION['apellido1'] = $datos['apellido1'];
-        $_SESSION['rol'] = 'candidato';
-        header('Location: candidato/panel.php');
-        exit();
-    }
-
-    // Verificar si es empresa
-    $stmt = $conexion->prepare("SELECT id, nombre, contrasena FROM EMPRESA WHERE correo = :correo LIMIT 1");
-    $stmt->bindParam(':correo', $correo);
-    $stmt->execute();
-    $datos = $stmt->fetch(PDO::FETCH_ASSOC);
-
-    if ($datos && password_verify($contrasena, $datos['contrasena'])) {
-        $_SESSION['id'] = $datos['id'];
-        $_SESSION['nombre'] = $datos['nombre'];
-        $_SESSION['rol'] = 'empresa';
-        header('Location: empresa/panel_empresa.php');
-        exit();
-    }
-
-    $errores = "Correo o contrasena incorrectos";
 }
 ?>
 <!DOCTYPE html>
@@ -87,10 +94,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <?php endif; ?>
                     <div class="card shadow-sm">
                         <div class="card-body p-4">
-                            <form method="POST">
+                            <form method="POST" novalidate>
                                 <div class="mb-3">
                                     <label class="form-label">Correo electronico</label>
-                                    <input type="email" name="correo" class="form-control" required>
+                                    <input type="email" name="correo" class="form-control" value="<?php echo htmlspecialchars($correo); ?>" required>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Contrasena</label>

@@ -7,10 +7,11 @@ if (!isset($_SESSION['id']) || $_SESSION['rol'] != 'empresa') {
     exit();
 }
 
-$errores = "";
+$errores = [];
+$oferta = null;
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_POST['id'];
+    $id = $_POST['id'] ?? '';
 
     // Comprobar que la oferta pertenece a esta empresa
     if (!Oferta::perteneceA($id, $_SESSION['id'])) {
@@ -18,23 +19,54 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    $titulo = htmlspecialchars($_POST['titulo']);
-    $descripcion = htmlspecialchars($_POST['descripcion']);
-    $ubicacion = htmlspecialchars($_POST['ubicacion']);
-    $area = htmlspecialchars($_POST['area']);
+    $titulo      = trim($_POST['titulo'] ?? '');
+    $descripcion = trim($_POST['descripcion'] ?? '');
+    $ubicacion   = trim($_POST['ubicacion'] ?? '');
+    $area        = trim($_POST['area'] ?? '');
 
-    if ($titulo && $area) {
+    // --- Validaciones de servidor ---
+    if ($titulo === '') {
+        $errores['titulo'] = "El título es obligatorio.";
+    } elseif (mb_strlen($titulo) < 3) {
+        $errores['titulo'] = "El título debe tener al menos 3 caracteres.";
+    } elseif (mb_strlen($titulo) > 100) {
+        $errores['titulo'] = "El título no puede superar los 100 caracteres.";
+    }
+
+    if ($area === '') {
+        $errores['area'] = "El área profesional es obligatoria.";
+    } elseif (mb_strlen($area) < 2) {
+        $errores['area'] = "El área debe tener al menos 2 caracteres.";
+    }
+
+    if ($ubicacion !== '' && mb_strlen($ubicacion) > 100) {
+        $errores['ubicacion'] = "La ubicación no puede superar los 100 caracteres.";
+    }
+
+    if (mb_strlen($descripcion) > 2000) {
+        $errores['descripcion'] = "La descripción no puede superar los 2000 caracteres.";
+    }
+
+    if (empty($errores)) {
         if (Oferta::actualizar($id, $titulo, $descripcion, $ubicacion, $area)) {
             header('Location: mis_ofertas.php?mensaje=oferta_actualizada');
             exit();
         } else {
-            $errores = "Error al actualizar la oferta";
+            $errores['general'] = "Error al actualizar la oferta.";
         }
-    } else {
-        $errores = "El titulo y el area son obligatorios";
     }
+
+    // Si hubo error, conservar lo que el usuario acababa de escribir
+    $oferta = [
+        'id'          => $id,
+        'titulo'      => $titulo,
+        'area'        => $area,
+        'ubicacion'   => $ubicacion,
+        'descripcion' => $descripcion,
+    ];
+
 } else {
-    $id = $_GET['id'];
+    $id = $_GET['id'] ?? '';
 
     // Comprobar que la oferta pertenece a esta empresa
     if (!Oferta::perteneceA($id, $_SESSION['id'])) {
@@ -64,30 +96,49 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             <div class="row justify-content-center">
                 <div class="col-md-8">
                     <h2 class="fw-bold mb-4">Editar oferta</h2>
-                    <?php if ($errores): ?>
-                        <div class="alert alert-danger"><?php echo $errores; ?></div>
+                    <?php if (isset($errores['general'])): ?>
+                        <div class="alert alert-danger"><?php echo $errores['general']; ?></div>
                     <?php endif; ?>
                     <div class="card shadow-sm">
                         <div class="card-body p-4">
-                            <form method="POST">
-                                <input type="hidden" name="id" value="<?php echo $oferta['id']; ?>">
+                            <form method="POST" novalidate>
+                                <input type="hidden" name="id" value="<?php echo htmlspecialchars($oferta['id']); ?>">
                                 <div class="mb-3">
                                     <label class="form-label">Titulo de la oferta</label>
-                                    <input type="text" name="titulo" class="form-control" value="<?php echo htmlspecialchars($oferta['titulo']); ?>" required>
+                                    <input type="text" name="titulo"
+                                           class="form-control <?php echo isset($errores['titulo']) ? 'is-invalid' : ''; ?>"
+                                           value="<?php echo htmlspecialchars($oferta['titulo']); ?>" required>
+                                    <?php if (isset($errores['titulo'])): ?>
+                                        <div class="invalid-feedback"><?php echo $errores['titulo']; ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Area profesional</label>
-                                        <input type="text" name="area" class="form-control" value="<?php echo htmlspecialchars($oferta['area']); ?>" required>
+                                        <input type="text" name="area"
+                                               class="form-control <?php echo isset($errores['area']) ? 'is-invalid' : ''; ?>"
+                                               value="<?php echo htmlspecialchars($oferta['area']); ?>" required>
+                                        <?php if (isset($errores['area'])): ?>
+                                            <div class="invalid-feedback"><?php echo $errores['area']; ?></div>
+                                        <?php endif; ?>
                                     </div>
                                     <div class="col-md-6 mb-3">
                                         <label class="form-label">Ubicacion</label>
-                                        <input type="text" name="ubicacion" class="form-control" value="<?php echo htmlspecialchars($oferta['ubicacion']); ?>">
+                                        <input type="text" name="ubicacion"
+                                               class="form-control <?php echo isset($errores['ubicacion']) ? 'is-invalid' : ''; ?>"
+                                               value="<?php echo htmlspecialchars($oferta['ubicacion']); ?>">
+                                        <?php if (isset($errores['ubicacion'])): ?>
+                                            <div class="invalid-feedback"><?php echo $errores['ubicacion']; ?></div>
+                                        <?php endif; ?>
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label class="form-label">Descripcion</label>
-                                    <textarea name="descripcion" class="form-control" rows="5"><?php echo htmlspecialchars($oferta['descripcion']); ?></textarea>
+                                    <textarea name="descripcion" rows="5"
+                                              class="form-control <?php echo isset($errores['descripcion']) ? 'is-invalid' : ''; ?>"><?php echo htmlspecialchars($oferta['descripcion']); ?></textarea>
+                                    <?php if (isset($errores['descripcion'])): ?>
+                                        <div class="invalid-feedback"><?php echo $errores['descripcion']; ?></div>
+                                    <?php endif; ?>
                                 </div>
                                 <button type="submit" class="btn btn-success w-100">Guardar cambios</button>
                                 <a href="mis_ofertas.php" class="btn btn-outline-secondary w-100 mt-2">Cancelar</a>
