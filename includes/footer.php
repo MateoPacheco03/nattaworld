@@ -9,24 +9,24 @@
         <li>
             <h2>Producto</h2>
         </li>
-        <li><a href="./candidato.php">Para candidatos</a></li>
-        <li><a href="./empresa.php">Para empresas</a></li>
-        <li><a href="./ofertas.php">Buscar ofertas</a></li>
+        <li><a href="/nattaworld/candidato.php">Para candidatos</a></li>
+        <li><a href="/nattaworld/empresa.php">Para empresas</a></li>
+        <li><a href="/nattaworld/ofertas.php">Buscar ofertas</a></li>
     </ul>
     <ul class='grid-item f3'>
         <li>
             <h2>Empresa</h2>
         </li>
-        <li><a href="./nosotros.php">Sobre nosotros</a></li>
-        <li><a href="./blog.php">Blog</a></li>
-        <li><a href="./contacto.php">Contacto</a></li>
+        <li><a href="/nattaworld/nosotros.php">Sobre nosotros</a></li>
+        <li><a href="/nattaworld/blog.php">Blog</a></li>
+        <li><a href="/nattaworld/contacto.php">Contacto</a></li>
     </ul>
     <ul class='grid-item f4'>
         <li>
             <h2>Legal</h2>
         </li>
-        <li><a href="./privacidad.php">Privacidad</a></li>
-        <li><a href="./cookies.php">Cookies</a></li>
-        <li><a href="./terminos.php">Términos</a></li>
+        <li><a href="/nattaworld/privacidad.php">Privacidad</a></li>
+        <li><a href="/nattaworld/cookies.php">Cookies</a></li>
+        <li><a href="/nattaworld/terminos.php">Términos</a></li>
     </ul>
 </footer>

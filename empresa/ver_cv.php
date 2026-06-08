@@ -33,7 +33,7 @@ if (isset($_GET['id'])) {
     Postulacion::marcarRevisado($id_postulacion);
 
     // Servir el PDF de forma controlada
-    $ruta = $_SERVER['DOCUMENT_ROOT'] . '/juniorworld/uploads/cv/' . $cv;
+    $ruta = $_SERVER['DOCUMENT_ROOT'] . '/nattaworld/uploads/cv/' . $cv;
     if (file_exists($ruta)) {
         header('Content-Type: application/pdf');
         header('Content-Disposition: inline; filename="' . $cv . '"');

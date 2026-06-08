@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página no encontrada — Nattaworld</title>
-    <link rel="stylesheet" href="/juniorworld/assets/css/stylos.css">
-    <link rel="stylesheet" href="/juniorworld/assets/css/botones.css">
-    <link rel="icon" type="image/png" sizes="32x32" href="/juniorworld/assets/img/iconos/iconoNattaworld.png">
+    <link rel="stylesheet" href="/nattaworld/assets/css/stylos.css">
+    <link rel="stylesheet" href="/nattaworld/assets/css/botones.css">
+    <link rel="icon" type="image/png" sizes="32x32" href="/nattaworld/assets/img/iconos/iconoNattaworld.png">
     <style>
         .error-wrapper {
             text-align: center;
@@ -35,18 +35,18 @@
 </head>
 <body>
 
-    <?php @include_once($_SERVER['DOCUMENT_ROOT'] . '/juniorworld/includes/navbar.php'); ?>
+    <?php @include_once($_SERVER['DOCUMENT_ROOT'] . '/nattaworld/includes/navbar.php'); ?>
 
     <main>
         <div class="error-wrapper">
             <div class="error-codigo">404</div>
             <h1>Vaya, esta página no existe</h1>
             <p>La dirección que buscas no se encuentra o ha sido movida.</p>
-            <a href="/juniorworld/inicio.php" class="btn-primary">Volver al inicio</a>
+            <a href="/nattaworld/inicio.php" class="btn-primary">Volver al inicio</a>
         </div>
     </main>
 
-    <?php @include_once($_SERVER['DOCUMENT_ROOT'] . '/juniorworld/includes/footer.php'); ?>
+    <?php @include_once($_SERVER['DOCUMENT_ROOT'] . '/nattaworld/includes/footer.php'); ?>
 
 </body>
 </html>

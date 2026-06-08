@@ -3,7 +3,7 @@ class Database {
     private $host = "localhost";
     private $user = "root";
     private $password = "";
-    private $name_database = "proyecto_juniorworld";
+    private $name_database = "nattaworld";
 
     public function obtenerConexion() {
         try {

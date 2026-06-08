@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['id_oferta'])) {
             }
 
             $cv_final = 'cv_' . $id_usuario . '_oferta' . $id_oferta . '_' . time() . '.pdf';
-            $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/juniorworld/uploads/cv/' . $cv_final;
+            $ruta_destino = $_SERVER['DOCUMENT_ROOT'] . '/nattaworld/uploads/cv/' . $cv_final;
             if (!move_uploaded_file($_FILES['cv_nuevo']['tmp_name'], $ruta_destino)) {
                 header('Location: oferta_detalle.php?id=' . $id_oferta . '&error=subida');
                 exit();
